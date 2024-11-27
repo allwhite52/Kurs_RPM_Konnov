@@ -1,0 +1,62 @@
+﻿<Window x:Class="matrix_calc_kurs.MainWindow" WindowStartupLocation="CenterScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:matrix_calc_kurs"
+        mc:Ignorable="d"
+        Title="Калькулятор матриц" Background="LightGray" Height="700" Width="850" Icon="/calculator_icon-icons.com_72046.ico">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="Меню">
+                <MenuItem Header="Информация" x:Name="info" Click="info_Click"/>
+                <MenuItem Header="Выход" x:Name="exit" Click="exit_Click"/>
+            </MenuItem>
+        </Menu>
+        <Label Content="Первая матрица" FontSize="16" HorizontalAlignment="Left" Margin="80,23,0,0" VerticalAlignment="Top"/>
+        <Label Content="Вторая матрица" FontSize="16" HorizontalAlignment="Left" Margin="608,23,0,0" VerticalAlignment="Top"/>
+        <Label Content="Кол-во строк:" HorizontalAlignment="Left" Margin="80,59,0,0" VerticalAlignment="Top"/>
+        <TextBox  x:Name="rows1" MaxLength="1" HorizontalAlignment="Left" Margin="189,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+        <Label Content="Кол-во столбцов:" HorizontalAlignment="Left" Margin="80,90,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="columns1" MaxLength="1" HorizontalAlignment="Left" Margin="189,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+        <Label Content="Кол-во строк:" HorizontalAlignment="Left" Margin="608,63,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="rows2" MaxLength="1" HorizontalAlignment="Left" Margin="719,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+        <Label Content="Кол-во столбцов:" HorizontalAlignment="Left" Margin="608,94,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="columns2" MaxLength="1" HorizontalAlignment="Left" Margin="719,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+        <Button x:Name="create1" Click="create1_Click" Content="Cоздать матрицу" HorizontalAlignment="Left" Margin="80,128,0,0" VerticalAlignment="Top" Width="153" Height="21"/>
+        <Button Content="Создать матрицу" x:Name="create2" Click="create2_Click" HorizontalAlignment="Left" Margin="608,128,0,0" VerticalAlignment="Top" Width="155" Height="21"/>
+        <DataGrid x:Name="dg1" AutoGenerateColumns="False" CanUserAddRows="True"  Visibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=0}" Margin="11,162,509,342"/>
+        <DataGrid x:Name="dg2" AutoGenerateColumns="False" CanUserAddRows="True" Visibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=0}" Margin="510,162,10,342"/>
+        <Button Content="Транспонировать матрицу" x:Name="transposition1" Click="transposition1_Click" HorizontalAlignment="Left" Margin="91,348,0,0" VerticalAlignment="Top" Width="156" Height="20"/>
+        <Button Content="Умножить на число" x:Name="button_multiply_number1" Click="button_multiply_number1_Click" HorizontalAlignment="Left" Margin="91,379,0,0" VerticalAlignment="Top" Width="157" Height="19"/>
+        <TextBox x:Name="multiply_number1" HorizontalAlignment="Left" Margin="266,377,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44" Height="20"/>
+        <Button x:Name="button_rank1" Click="button_rank1_Click" Content="Рассчитать ранг матрицы" HorizontalAlignment="Left" Margin="91,406,0,0" VerticalAlignment="Top" Width="157" Height="20"/>
+        <TextBox x:Name="rank_matrix1" HorizontalAlignment="Left" Margin="266,406,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44" Height="20"/>
+        <Button Content="Транспонировать матрицу" x:Name="transposition2" Click="transposition2_Click" HorizontalAlignment="Left" Margin="596,348,0,0" VerticalAlignment="Top" Width="158" Height="20"/>
+        <Button Content="Умножить на число" x:Name="button_multiply_number2" Click="button_multiply_number2_Click" HorizontalAlignment="Left" Margin="596,379,0,0" VerticalAlignment="Top" Width="158" Height="19"/>
+        <TextBox x:Name="multiply_number2" HorizontalAlignment="Left" Margin="770,379,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="42"/>
+        <Button Content="Рассчитать ранг матрицы" x:Name="button_rank2" Click="button_rank2_Click"  HorizontalAlignment="Left" Margin="596,406,0,0" VerticalAlignment="Top" Width="158" Height="20"/>
+        <TextBox x:Name="rank_matrix2" HorizontalAlignment="Left" Margin="770,406,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="42"/>
+        <Label Content="Возможные математические действия:" HorizontalAlignment="Left" Margin="328,406,0,0" VerticalAlignment="Top"/>
+        <Button Content="Сложение матриц" x:Name="sum_matrix" Click="sum_matrix_Click" HorizontalAlignment="Left" Margin="176,447,0,0" VerticalAlignment="Top" Width="110" Height="20"/>
+        <Button Content="Вычитание матриц" x:Name="subtraction_matrix" Click="subtraction_matrix_Click" HorizontalAlignment="Left" Margin="302,447,0,0" VerticalAlignment="Top" Width="112" Height="20"/>
+        <Button Content="Умножение матриц" x:Name="multiply_matrix" Click="multiply_matrix_Click" HorizontalAlignment="Left" Margin="428,447,0,0" VerticalAlignment="Top" Width="116" Height="20"/>
+        <DataGrid x:Name="dg3" Visibility="Hidden" AutoGenerateColumns="False" IsReadOnly="True" d:ItemsSource="{d:SampleData ItemCount=0}" Margin="231,477,257,33"/>
+        <Button Content="Очистка" x:Name="clear" Click="clear_Click" HorizontalAlignment="Left" Margin="558,447,0,0" VerticalAlignment="Top" Width="98" Height="20"/>
+    </Grid>
+</Window>
